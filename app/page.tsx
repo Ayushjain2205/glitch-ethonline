@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Play, Zap, ArrowRight } from "lucide-react";
+import { ConnectButton } from "thirdweb/react";
+import { client } from "@/lib/client";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -46,12 +48,7 @@ export default function Home() {
             <Button variant="ghost" size="sm">
               Create
             </Button>
-            <Button
-              size="sm"
-              className="bg-accent text-background hover:bg-accent/90"
-            >
-              Sign In
-            </Button>
+            <ConnectButton client={client} />
           </div>
         </div>
       </nav>

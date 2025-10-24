@@ -1,6 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Orbitron, Space_Mono } from "next/font/google";
+import { ThirdwebProvider } from "thirdweb/react";
 
 import "./globals.css";
 
@@ -22,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>{children}</body>
+      <body className={`font-sans antialiased`}>
+        <ThirdwebProvider>{children}</ThirdwebProvider>
+      </body>
     </html>
   );
 }
