@@ -11,9 +11,8 @@ const _orbitron = Orbitron({
 const _spaceMono = Space_Mono({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
-  title: "v0 App",
-  description: "Created with v0",
-  generator: "v0.app",
+  title: "Glitch",
+  description: "Create Games ",
 };
 
 export default function RootLayout({

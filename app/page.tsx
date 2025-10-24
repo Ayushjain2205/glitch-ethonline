@@ -58,39 +58,83 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 px-4 min-h-[50vh] flex items-center justify-center">
-        <div className="absolute inset-0 opacity-60">
-          {/* Large animated cyan blobs */}
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent rounded-full mix-blend-screen blur-3xl animate-pulse"></div>
+        {/* TV Flicker Overlay */}
+        <div className="absolute inset-0 tv-flicker opacity-20 pointer-events-none"></div>
+
+        <div className="absolute inset-0 opacity-60 tv-flicker">
+          {/* Large animated multi-color blobs */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-chart-1 rounded-full mix-blend-screen blur-3xl animate-pulse"></div>
           <div
-            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent rounded-full mix-blend-screen blur-3xl animate-pulse"
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-chart-2 rounded-full mix-blend-screen blur-3xl animate-pulse"
             style={{ animationDelay: "0.5s" }}
           ></div>
+          <div
+            className="absolute top-1/2 left-1/2 w-80 h-80 bg-chart-3 rounded-full mix-blend-screen blur-3xl animate-pulse"
+            style={{ animationDelay: "1s" }}
+          ></div>
+          <div
+            className="absolute top-3/4 left-1/6 w-72 h-72 bg-chart-4 rounded-full mix-blend-screen blur-3xl animate-pulse"
+            style={{ animationDelay: "1.5s" }}
+          ></div>
 
-          {/* Diagonal glitch lines with cyan */}
-          <div className="absolute top-0 left-0 right-0 bottom-0">
-            <div className="absolute top-1/3 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-accent to-transparent opacity-70 animate-pulse"></div>
+          {/* Diagonal glitch lines with multi-color */}
+          <div className="absolute top-0 left-0 right-0 bottom-0 tv-flicker">
+            <div className="absolute top-1/3 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-chart-1 to-transparent opacity-70 animate-pulse"></div>
             <div
-              className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-50 animate-pulse"
+              className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-chart-2 to-transparent opacity-50 animate-pulse"
               style={{ animationDelay: "0.2s" }}
             ></div>
             <div
-              className="absolute top-2/3 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-accent to-transparent opacity-60 animate-pulse"
+              className="absolute top-2/3 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-chart-3 to-transparent opacity-60 animate-pulse"
               style={{ animationDelay: "0.4s" }}
+            ></div>
+            <div
+              className="absolute top-1/4 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-chart-4 to-transparent opacity-40 animate-pulse"
+              style={{ animationDelay: "0.6s" }}
+            ></div>
+            <div
+              className="absolute top-3/4 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-chart-5 to-transparent opacity-50 animate-pulse"
+              style={{ animationDelay: "0.8s" }}
             ></div>
           </div>
 
-          {/* Vertical glitch distortions */}
-          <div className="absolute inset-0 glitch-bg-effect opacity-40"></div>
+          {/* Vertical glitch distortions with multiple layers */}
+          <div className="absolute inset-0 glitch-bg-effect opacity-40 tv-flicker"></div>
+          <div className="absolute inset-0 glitch-bg-effect-2 opacity-30 tv-flicker"></div>
+          <div className="absolute inset-0 glitch-bg-effect-3 opacity-25 tv-flicker"></div>
+
+          {/* TV Static Effects */}
+          <div className="absolute inset-0 tv-static opacity-15 pointer-events-none"></div>
+          <div
+            className="absolute inset-0 tv-static opacity-10 pointer-events-none"
+            style={{ animationDelay: "0.1s" }}
+          ></div>
         </div>
 
-        {/* Prominent scan line overlay */}
+        {/* Prominent multi-color scan line overlay with TV-like stuttering */}
         <div className="absolute inset-0 pointer-events-none opacity-40">
           <div
             className="absolute inset-0 bg-repeat"
             style={{
               backgroundImage:
                 "repeating-linear-gradient(0deg, rgba(0, 255, 255, 0.1) 0px, rgba(0, 255, 255, 0.1) 2px, transparent 2px, transparent 4px)",
-              animation: "scan-lines 4s linear infinite",
+              animation: "scan-lines 8s linear infinite",
+            }}
+          ></div>
+          <div
+            className="absolute inset-0 bg-repeat"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(0deg, rgba(255, 107, 107, 0.08) 0px, rgba(255, 107, 107, 0.08) 2px, transparent 2px, transparent 4px)",
+              animation: "scan-lines 6s linear infinite reverse",
+            }}
+          ></div>
+          <div
+            className="absolute inset-0 bg-repeat"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(0deg, rgba(108, 92, 231, 0.06) 0px, rgba(108, 92, 231, 0.06) 2px, transparent 2px, transparent 4px)",
+              animation: "scan-lines 10s linear infinite",
             }}
           ></div>
         </div>
