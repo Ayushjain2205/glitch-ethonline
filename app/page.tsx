@@ -4,11 +4,30 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Play, ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/navbar";
+import Link from "next/link";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const games = [
+    {
+      id: "candy-crush",
+      title: "🍭 Candy Crush",
+      creator: "AI Generated",
+      plays: "12.5K",
+    },
+    {
+      id: "game-full",
+      title: "🎮 Full Candy Crush",
+      creator: "Direct Implementation",
+      plays: "2.0K",
+    },
+    {
+      id: "sandpack",
+      title: "🧪 Sandpack Test",
+      creator: "Sandpack",
+      plays: "1.0K",
+    },
     { id: 1, title: "Pixel Quest", creator: "Alex Dev", plays: "2.3K" },
     { id: 2, title: "Neon Runner", creator: "Game Master", plays: "5.1K" },
     { id: 3, title: "Cyber Maze", creator: "Code Wizard", plays: "1.8K" },
@@ -56,21 +75,21 @@ export default function Home() {
 
           {/* Diagonal glitch lines with multi-color */}
           <div className="absolute top-0 left-0 right-0 bottom-0 tv-flicker">
-            <div className="absolute top-1/3 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-chart-1 to-transparent opacity-70 animate-pulse"></div>
+            <div className="absolute top-1/3 left-0 right-0 h-2 bg-linear-to-r from-transparent via-chart-1 to-transparent opacity-70 animate-pulse"></div>
             <div
-              className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-chart-2 to-transparent opacity-50 animate-pulse"
+              className="absolute top-1/2 left-0 right-0 h-1 bg-linear-to-r from-transparent via-chart-2 to-transparent opacity-50 animate-pulse"
               style={{ animationDelay: "0.2s" }}
             ></div>
             <div
-              className="absolute top-2/3 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-chart-3 to-transparent opacity-60 animate-pulse"
+              className="absolute top-2/3 left-0 right-0 h-2 bg-linear-to-r from-transparent via-chart-3 to-transparent opacity-60 animate-pulse"
               style={{ animationDelay: "0.4s" }}
             ></div>
             <div
-              className="absolute top-1/4 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-chart-4 to-transparent opacity-40 animate-pulse"
+              className="absolute top-1/4 left-0 right-0 h-1 bg-linear-to-r from-transparent via-chart-4 to-transparent opacity-40 animate-pulse"
               style={{ animationDelay: "0.6s" }}
             ></div>
             <div
-              className="absolute top-3/4 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-chart-5 to-transparent opacity-50 animate-pulse"
+              className="absolute top-3/4 left-0 right-0 h-2 bg-linear-to-r from-transparent via-chart-5 to-transparent opacity-50 animate-pulse"
               style={{ animationDelay: "0.8s" }}
             ></div>
           </div>
@@ -132,7 +151,7 @@ export default function Home() {
                   className="bg-transparent outline-none w-full text-foreground placeholder-muted-foreground text-lg"
                 />
                 <button
-                  className={`ml-4 flex-shrink-0 p-2 rounded-lg transition-all ${
+                  className={`ml-4 shrink-0 p-2 rounded-lg transition-all ${
                     searchQuery.trim()
                       ? "bg-accent text-background hover:bg-accent/90 neon-glow"
                       : "bg-accent/20 text-accent/50 cursor-not-allowed"
@@ -175,12 +194,21 @@ export default function Home() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {games.map((game) => (
-            <div
+            <Link
               key={game.id}
-              className="group relative neon-border rounded-lg overflow-hidden bg-card/50 backdrop-blur-sm hover:bg-card/80 transition-all cursor-pointer h-48"
+              href={
+                game.id === "candy-crush"
+                  ? "/game"
+                  : game.id === "game-full"
+                  ? "/game-full"
+                  : game.id === "sandpack"
+                  ? "/sandpack"
+                  : "#"
+              }
+              className="group relative neon-border rounded-lg overflow-hidden bg-card/50 backdrop-blur-sm hover:bg-card/80 transition-all cursor-pointer h-48 block"
             >
               {/* Game Thumbnail */}
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-linear-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
               {/* Content */}
               <div className="relative h-full flex flex-col justify-between p-4">
@@ -200,7 +228,7 @@ export default function Home() {
                   <Play className="w-4 h-4 text-accent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
