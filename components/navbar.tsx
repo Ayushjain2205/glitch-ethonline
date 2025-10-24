@@ -5,6 +5,7 @@ import { Zap } from "lucide-react";
 import { ConnectButton } from "thirdweb/react";
 import { client } from "@/lib/client";
 import { sepolia } from "thirdweb/chains";
+import Link from "next/link";
 
 interface NavbarProps {
   className?: string;
@@ -17,7 +18,9 @@ export function Navbar({ className = "" }: NavbarProps) {
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <img src="/glitch.svg" alt="Glitch" className="h-10" />
+          <Link href="/">
+            <img src="/glitch.svg" alt="Glitch" className="h-10" />
+          </Link>
         </div>
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="sm">
