@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Play, Zap, ArrowRight } from "lucide-react";
-import { ConnectButton } from "thirdweb/react";
-import { client } from "@/lib/client";
+import { Play, ArrowRight } from "lucide-react";
+import { Navbar } from "@/components/navbar";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -32,26 +31,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground scan-lines">
-      {/* Navigation */}
-      <nav className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center neon-glow">
-              <Zap className="w-5 h-5 text-background" />
-            </div>
-            <span className="text-xl font-bold glitch-text">GLITCH</span>
-          </div>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm">
-              Explore
-            </Button>
-            <Button variant="ghost" size="sm">
-              Create
-            </Button>
-            <ConnectButton client={client} />
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 px-4 min-h-[50vh] flex items-center justify-center">
