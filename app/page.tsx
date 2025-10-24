@@ -1,65 +1,188 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Play, Zap, ArrowRight } from "lucide-react";
 
 export default function Home() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const games = [
+    { id: 1, title: "Pixel Quest", creator: "Alex Dev", plays: "2.3K" },
+    { id: 2, title: "Neon Runner", creator: "Game Master", plays: "5.1K" },
+    { id: 3, title: "Cyber Maze", creator: "Code Wizard", plays: "1.8K" },
+    { id: 4, title: "Digital Dreams", creator: "Creative AI", plays: "3.2K" },
+    { id: 5, title: "Glitch Escape", creator: "Tech Artist", plays: "4.5K" },
+    { id: 6, title: "Neon Nights", creator: "Pixel Master", plays: "2.9K" },
+    { id: 7, title: "Code Breaker", creator: "Dev Studio", plays: "6.1K" },
+    { id: 8, title: "Digital Realm", creator: "Game Forge", plays: "3.7K" },
+  ];
+
+  const featured = [
+    { id: 1, title: "AI Game Studio", desc: "Create games with AI assistance" },
+    { id: 2, title: "Instant Deploy", desc: "Deploy your games instantly" },
+    {
+      id: 3,
+      title: "Community Games",
+      desc: "Play games made by the community",
+    },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-background text-foreground scan-lines">
+      {/* Navigation */}
+      <nav className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center neon-glow">
+              <Zap className="w-5 h-5 text-background" />
+            </div>
+            <span className="text-xl font-bold glitch-text">GLITCH</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" size="sm">
+              Explore
+            </Button>
+            <Button variant="ghost" size="sm">
+              Create
+            </Button>
+            <Button
+              size="sm"
+              className="bg-accent text-background hover:bg-accent/90"
+            >
+              Sign In
+            </Button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative overflow-hidden py-20 px-4 min-h-[50vh] flex items-center justify-center">
+        <div className="absolute inset-0 opacity-60">
+          {/* Large animated cyan blobs */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent rounded-full mix-blend-screen blur-3xl animate-pulse"></div>
+          <div
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent rounded-full mix-blend-screen blur-3xl animate-pulse"
+            style={{ animationDelay: "0.5s" }}
+          ></div>
+
+          {/* Diagonal glitch lines with cyan */}
+          <div className="absolute top-0 left-0 right-0 bottom-0">
+            <div className="absolute top-1/3 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-accent to-transparent opacity-70 animate-pulse"></div>
+            <div
+              className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-50 animate-pulse"
+              style={{ animationDelay: "0.2s" }}
+            ></div>
+            <div
+              className="absolute top-2/3 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-accent to-transparent opacity-60 animate-pulse"
+              style={{ animationDelay: "0.4s" }}
+            ></div>
+          </div>
+
+          {/* Vertical glitch distortions */}
+          <div className="absolute inset-0 glitch-bg-effect opacity-40"></div>
+        </div>
+
+        {/* Prominent scan line overlay */}
+        <div className="absolute inset-0 pointer-events-none opacity-40">
+          <div
+            className="absolute inset-0 bg-repeat"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(0deg, rgba(0, 255, 255, 0.1) 0px, rgba(0, 255, 255, 0.1) 2px, transparent 2px, transparent 4px)",
+              animation: "scan-lines 4s linear infinite",
+            }}
+          ></div>
+        </div>
+
+        <div className="max-w-2xl mx-auto text-center relative z-10">
+          <h1 className="text-6xl md:text-7xl font-black mb-12 glitch-text">
+            Create Games with AI
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+
+          <div className="relative max-w-2xl mx-auto">
+            <div className="neon-border rounded-lg bg-card/50 backdrop-blur-sm border-2 border-accent/60">
+              <div className="flex items-center px-6 py-5">
+                <input
+                  type="text"
+                  placeholder="Describe your game idea..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="bg-transparent outline-none w-full text-foreground placeholder-muted-foreground text-lg"
+                />
+                <button
+                  className={`ml-4 flex-shrink-0 p-2 rounded-lg transition-all ${
+                    searchQuery.trim()
+                      ? "bg-accent text-background hover:bg-accent/90 neon-glow"
+                      : "bg-accent/20 text-accent/50 cursor-not-allowed"
+                  }`}
+                  disabled={!searchQuery.trim()}
+                >
+                  <ArrowRight className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Featured Section */}
+      <section className="py-16 px-4 max-w-7xl mx-auto">
+        <h2 className="text-3xl font-bold mb-8 glitch-text">Featured</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {featured.map((item) => (
+            <div
+              key={item.id}
+              className="group neon-border rounded-lg p-6 bg-card/50 backdrop-blur-sm hover:bg-card/80 transition-all cursor-pointer"
+            >
+              <div className="w-12 h-12 bg-accent/20 rounded-lg mb-4 group-hover:bg-accent/40 transition-colors"></div>
+              <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+              <p className="text-muted-foreground text-sm">{item.desc}</p>
+            </div>
+          ))}
         </div>
-      </main>
+      </section>
+
+      {/* Games Grid */}
+      <section className="py-16 px-4 max-w-7xl mx-auto">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-3xl font-bold glitch-text">Popular Games</h2>
+          <Button variant="ghost" className="text-accent hover:bg-accent/10">
+            View All →
+          </Button>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {games.map((game) => (
+            <div
+              key={game.id}
+              className="group relative neon-border rounded-lg overflow-hidden bg-card/50 backdrop-blur-sm hover:bg-card/80 transition-all cursor-pointer h-48"
+            >
+              {/* Game Thumbnail */}
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+              {/* Content */}
+              <div className="relative h-full flex flex-col justify-between p-4">
+                <div>
+                  <h3 className="font-bold text-sm mb-1 line-clamp-2">
+                    {game.title}
+                  </h3>
+                  <p className="text-xs text-muted-foreground">
+                    {game.creator}
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-muted-foreground">
+                    {game.plays} plays
+                  </span>
+                  <Play className="w-4 h-4 text-accent opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
