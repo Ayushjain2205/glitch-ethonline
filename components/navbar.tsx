@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Zap } from "lucide-react";
 import { ConnectButton } from "thirdweb/react";
 import { client } from "@/lib/client";
+import { sepolia } from "thirdweb/chains";
 
 interface NavbarProps {
   className?: string;
@@ -25,7 +26,15 @@ export function Navbar({ className = "" }: NavbarProps) {
           <Button variant="ghost" size="sm">
             Create
           </Button>
-          <ConnectButton client={client} />
+          <ConnectButton
+            client={client}
+            chain={sepolia}
+            detailsButton={{
+              displayBalanceToken: {
+                [sepolia.id]: "0xCaC524BcA292aaade2DF8A05cC58F0a65B1B3bB9",
+              },
+            }}
+          />
         </div>
       </div>
     </nav>
